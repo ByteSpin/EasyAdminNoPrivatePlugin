@@ -1,0 +1,33 @@
+{
+  "name": "bytespin/easyadmin-no-private-plugin",
+  "type": "composer-plugin",
+  "description": "It replaces the `private function __construct` PHP keyword from all EasyAdmin classes by `public function __construct`, so you can call parent constructors when extending a class.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Project Contributors",
+      "homepage": "https://github.com/orgs/ByteSpin/people"
+    }
+  ],
+  "require": {
+    "php": ">=8.0.2",
+    "composer-plugin-api": "^2.0"
+  },
+  "require-dev": {
+    "composer/composer": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "EasyCorp\\Bundle\\EasyAdminBundle\\": "src"
+    }
+  },
+  "config": {
+    "platform": { "php": "8.0.2" },
+    "preferred-install": { "*": "dist" },
+    "sort-packages": true
+  },
+  "extra": {
+    "class": "EasyCorp\\Bundle\\EasyAdminBundle\\NoPrivateConstructorPlugin"
+  }
+}
+
