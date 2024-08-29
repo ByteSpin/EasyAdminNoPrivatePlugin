@@ -51,6 +51,9 @@ final class NoPrivateConstructorPlugin implements PluginInterface, EventSubscrib
         $this->updatePrivateConstructorFromAllEasyAdminClasses();
     }
 
+    /**
+     * @throws JsonException
+     */
     public function onPackageUpdate(PackageEvent $event): void
     {
         if (!$this->isComposerWorkingOn('easycorp/easyadmin-bundle', $event)) {
@@ -73,7 +76,16 @@ final class NoPrivateConstructorPlugin implements PluginInterface, EventSubscrib
                 str_replace('private function __construct', 'public function __construct', file_get_contents($filePath)),
                 flags: \LOCK_EX
             );
+
+            if (str_contains($filePath, 'TemplateRegistry.php')) {
+                file_put_contents(
+                    $filePath,
+                    str_replace('private array $templates', 'public array $templates', file_get_contents($filePath)),
+                    flags: \LOCK_EX
+                );
+            }
         }
+
 
         $this->io->write('Updated all EasyAdmin PHP files to make constructors public');
     }
