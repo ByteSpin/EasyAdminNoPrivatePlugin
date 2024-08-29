@@ -71,7 +71,6 @@ final class NoPrivateConstructorPlugin implements PluginInterface, EventSubscrib
         $vendorDirPath = $this->getVendorDirPath();
         $easyAdminDirPath = $vendorDirPath.'/easycorp/easyadmin-bundle';
         foreach ($this->getFilePathsOfAllEasyAdminClasses($easyAdminDirPath) as $filePath) {
-            echo('parsing ' . $filePath . PHP_EOL);
             file_put_contents(
                 $filePath,
                 str_replace('private function __construct', 'public function __construct', file_get_contents($filePath)),
@@ -86,7 +85,7 @@ final class NoPrivateConstructorPlugin implements PluginInterface, EventSubscrib
                 );
             }
 
-            if (str_contains($filePath, 'Resources/config/service.php')) {
+            if (str_contains($filePath, 'Resources/config/services.php')) {
                 file_put_contents(
                     $filePath,
                     str_replace('->defaults()->private()', '->defaults()->public()', file_get_contents($filePath)),
