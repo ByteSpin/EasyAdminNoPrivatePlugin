@@ -84,6 +84,14 @@ final class NoPrivateConstructorPlugin implements PluginInterface, EventSubscrib
                     flags: \LOCK_EX
                 );
             }
+
+            if (str_contains($filePath, 'Resources/config/service.php')) {
+                file_put_contents(
+                    $filePath,
+                    str_replace('->defaults()->private()', '->defaults()->public()', file_get_contents($filePath)),
+                    flags: \LOCK_EX
+                );
+            }
         }
 
 
