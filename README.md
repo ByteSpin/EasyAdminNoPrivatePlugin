@@ -4,8 +4,8 @@ EasyAdmin No Private Composer Plugin
 When using EasyAdmin No Final Composer Plugin, EasyAdmin classes can be inherited.
 But some contructors remain private...
 
-This project is a Composer plugin that replaces the `private function __construct` PHP keyword from all
-EasyAdmin classes by `public function __construct`, so you can call parent constructors when extending a class.
+This project is a Composer plugin that replaces the 'private function __construct' PHP keyword from all
+EasyAdmin classes by 'public function __construct', so you can call parent constructor when extending a class.
 
 It shares a lot of code from the original EasyAdmin No Final Composer Plugin: https://github.com/EasyCorp/easyadmin-no-final-plugin
 
